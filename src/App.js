@@ -1,4 +1,5 @@
 import AddUser from "./components/AddUser";
+import Card from "./components/Card";
 
 function App() {
 
@@ -7,8 +8,10 @@ function App() {
   }
 
   return (
-    <div>
-      <AddUser onNewUser={onNewUserHandler} />
+    <div className="App">
+      <Card>
+        <AddUser onNewUser={onNewUserHandler} />
+      </Card>
     </div>
   );
 }
