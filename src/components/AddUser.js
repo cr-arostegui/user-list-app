@@ -29,34 +29,39 @@ const AddUser = (props) => {
   };
 
   const isFormValid = () => {
-    if (formData.username === '' || formData.years === '') {
+    if (
+      formData.username.trim().length === 0 ||
+      formData.years.trim().length === 0
+    ) {
       setInvalidInput(true);
       return false;
     }
 
     setInvalidInput(false);
     return true;
-  }
+  };
 
   const onCloseModal = () => {
     setInvalidInput(false);
-  }
+  };
 
   return (
     <>
       <form onSubmit={onSubmitFormHandler}>
         <div className={classes.input}>
           <div>
-            <label>Username</label>
+            <label htmlFor="username">Username</label>
             <input
+              id="username"
               type="text"
               value={formData.username}
               onChange={(e) => onChangeInputHandler('username', e.target.value)}
             />
           </div>
           <div>
-            <label>Age (Years)</label>
+            <label htmlFor="age">Age (Years)</label>
             <input
+              id="age"
               type="number"
               value={formData.years}
               onChange={(e) => onChangeInputHandler('years', e.target.value)}
@@ -65,7 +70,13 @@ const AddUser = (props) => {
           <Button type="submit" text="Add User" />
         </div>
       </form>
-      { invalidInput && <ErrorModal title="Invalid Input" content="Please enter a valid name and age (non-empty values)." onClose={onCloseModal}/> }
+      {invalidInput && (
+        <ErrorModal
+          title="Invalid Input"
+          content="Please enter a valid name and age (non-empty values)."
+          onClose={onCloseModal}
+        />
+      )}
     </>
   );
 };
