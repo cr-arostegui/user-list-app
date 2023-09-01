@@ -1,8 +1,9 @@
+import AddUser from "./components/AddUser";
 
 function App() {
   return (
     <div>
-      My App
+      <AddUser />
     </div>
   );
 }
